@@ -9,7 +9,7 @@ node_modules
 /.svelte-kit
 /build
 
-project.inlang
+project.inlang/cache
 
 # OS
 .DS_Store
