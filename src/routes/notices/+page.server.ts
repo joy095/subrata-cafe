@@ -2,6 +2,13 @@
 import { client } from '$lib/server/contentful';
 import type { PageServerLoad } from './$types';
 
+// Optional: Add caching headers for static assets
+export const config = {
+    isr: {
+        expiration: 60 // Cache for 10 minutes
+    }
+};
+
 
 export const load: PageServerLoad = async () => {
     try {
