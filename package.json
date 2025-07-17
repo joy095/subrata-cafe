@@ -48,6 +48,7 @@
 	"dependencies": {
 		"@contentful/rich-text-html-renderer": "^17.1.0",
 		"@inlang/paraglide-js": "^2.0.0",
+		"@tanstack/svelte-query": "^5.83.0",
 		"contentful": "^11.7.7"
 	},
 	"pnpm": {

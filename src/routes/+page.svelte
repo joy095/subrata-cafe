@@ -1,35 +1,37 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
 	import { spring } from 'svelte/motion';
 	import formatDate from '$lib/dateFormat';
 
-	export let data: {
-		latestNotices: {
-			title: string;
-			slug: string;
-			date: string;
-			body: string;
-		}[];
-		latestBlogs: {
-			title: string;
-			slug: string;
-			date: string;
-			body: string;
-			thumbnail?: { url: string };
-		}[];
-		error?: string;
-	};
-
-	let isLoading = true;
-
-	onMount(() => {
-		setTimeout(() => {
-			isLoading = false;
-		}, 800);
-	});
+	import { createQuery } from '@tanstack/svelte-query';
+	import { fetchNotices, fetchBlogs } from '$lib/api/contentful';
 
 	let ctaScale = spring(1, { stiffness: 0.1, damping: 0.8 });
+
+	type Notice = {
+		title: string;
+		slug: string;
+		date: string;
+		body: string;
+	};
+
+	type Blog = {
+		title: string;
+		slug: string;
+		date: string;
+		body: string;
+		thumbnail?: { url: string };
+	};
+
+	const noticesQuery = createQuery<Notice[], Error>({
+		queryKey: ['notices'],
+		queryFn: fetchNotices
+	});
+
+	const blogsQuery = createQuery<Blog[], Error>({
+		queryKey: ['blogs'],
+		queryFn: fetchBlogs
+	});
 </script>
 
 <section
@@ -146,9 +148,9 @@
 		>
 			Latest Notices
 		</h3>
-		{#if data.error}
-			<p class="text-center text-red-600">{data.error}</p>
-		{:else if isLoading}
+		{#if $noticesQuery.isError}
+			<p class="text-center text-red-600">Error loading notices.</p>
+		{:else if $noticesQuery.isLoading}
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{#each Array(3) as _}
 					<div class="h-24 animate-pulse rounded-xl bg-gray-200"></div>
@@ -156,11 +158,11 @@
 			</div>
 		{:else}
 			<ul class="space-y-6" transition:fade={{ duration: 400 }}>
-				{#each data.latestNotices as notice}
+				{#each $noticesQuery.data ?? [] as notice}
 					<li
 						class="rounded-xl bg-white/90 p-6 shadow-md backdrop-blur-sm transition-transform hover:-translate-y-1 hover:shadow-xl"
 						role="listitem"
-						in:slide={{ delay: 100 * data.latestNotices.indexOf(notice), duration: 400 }}
+						in:slide={{ delay: 100 * ($noticesQuery.data?.indexOf(notice) ?? 0), duration: 400 }}
 					>
 						<a
 							href={notice.slug ? `/notices/${notice.slug}` : '#'}
@@ -196,9 +198,9 @@
 			Recent Blog Posts
 		</h3>
 
-		{#if data.error}
-			<p class="text-center text-red-600">{data.error}</p>
-		{:else if isLoading}
+		{#if $blogsQuery.isError}
+			<p class="text-center text-red-600">Error loading blogs.</p>
+		{:else if $blogsQuery.isLoading}
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{#each Array(3) as _}
 					<div class="h-64 animate-pulse rounded-xl bg-gray-200"></div>
@@ -206,7 +208,7 @@
 			</div>
 		{:else}
 			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" transition:fade={{ duration: 400 }}>
-				{#each data.latestBlogs as blog}
+				{#each $blogsQuery.data ?? [] as blog}
 					<article class="overflow-hidden rounded-lg shadow-sm transition hover:shadow-lg">
 						<a href={blog.slug ? `/blog/${blog.slug}` : '#'}>
 							{#if blog.thumbnail?.url}
