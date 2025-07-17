@@ -5,12 +5,6 @@ import type { PageServerLoad } from './$types';
 // Enable prerendering for static generation
 export const prerender = true;
 
-// Optional: Add caching headers for static assets
-export const config = {
-    isr: {
-        expiration: 60 // Cache for 10 minutes
-    }
-};
 
 export const load: PageServerLoad = async () => {
     try {
