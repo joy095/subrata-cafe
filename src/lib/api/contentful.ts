@@ -1,5 +1,5 @@
 // lib/api/contentful.ts
-import { client } from '$lib/contentful';
+import { client } from '$lib/server/contentful';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 export const fetchNotices = async () => {

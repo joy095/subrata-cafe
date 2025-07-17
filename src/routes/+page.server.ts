@@ -1,9 +1,21 @@
-import { json } from '@sveltejs/kit';
-import { client } from '$lib/contentful';
+// src/routes/+page.server.ts
+import { client } from '$lib/server/contentful';
+import type { PageServerLoad } from './$types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-export const GET = async () => {
+// Enable prerendering for static generation
+export const prerender = true;
+
+// Optional: Add caching headers for static assets
+export const config = {
+    isr: {
+        expiration: 3600 // Cache for 1 hour
+    }
+};
+
+export const load: PageServerLoad = async () => {
     try {
+        // Fetch notices and blogs in parallel
         const [notices, blogs] = await Promise.all([
             client.getEntries({
                 content_type: 'notice',
@@ -17,14 +29,16 @@ export const GET = async () => {
             })
         ]);
 
-        const transformedNotices = notices.items.map((item) => ({
+        // Transform notices
+        const transformedNotices = notices.items.map((item: { fields: { headline?: string; slug?: string; date?: string; desc?: string; } }) => ({
             title: item.fields.headline || 'Untitled Notice',
             slug: item.fields.slug || '',
             date: item.fields.date || new Date().toISOString(),
             body: item.fields.desc || 'No content available'
         }));
 
-        const transformedBlogs = blogs.items.map((item) => ({
+        // Transform blogs
+        const transformedBlogs = blogs.items.map((item: { fields: { headline?: string; slug?: string; date?: string; blog?: any; thumbnail?: { fields?: { file?: { url?: string } } } } }) => ({
             title: item.fields.headline || 'Untitled Blog',
             slug: item.fields.slug || '',
             date: item.fields.date || new Date().toISOString(),
@@ -34,12 +48,16 @@ export const GET = async () => {
                 : undefined
         }));
 
-        return json({
+        return {
             latestNotices: transformedNotices,
             latestBlogs: transformedBlogs
-        });
+        };
     } catch (error) {
         console.error('❌ Error fetching Contentful data:', error);
-        return json({ latestNotices: [], latestBlogs: [], error: 'Failed to load content' }, { status: 500 });
+        return {
+            latestNotices: [],
+            latestBlogs: [],
+            error: 'Failed to load content'
+        };
     }
 };

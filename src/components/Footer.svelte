@@ -30,8 +30,8 @@
 			© {new Date().getFullYear()} CaféConnect. All rights reserved.
 		</p>
 		<div class="mt-4 flex justify-center space-x-6">
-			<a href="/privacy" class="text-gray-400 transition-colors hover:text-white">Privacy Policy</a>
-			<a href="/terms" class="text-gray-400 transition-colors hover:text-white">Terms of Service</a>
+			<a href="#" class="text-gray-400 transition-colors hover:text-white">Privacy Policy</a>
+			<a href="#" class="text-gray-400 transition-colors hover:text-white">Terms of Service</a>
 			<a href="/contact" class="text-gray-400 transition-colors hover:text-white">Contact Us</a>
 		</div>
 	</div>
