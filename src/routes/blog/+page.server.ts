@@ -3,10 +3,6 @@ import { client } from '$lib/server/contentful';
 import type { PageServerLoad } from './$types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-// Enable prerendering for static generation
-export const prerender = true;
-
-
 export const load: PageServerLoad = async () => {
     try {
         // Fetch notices and blogs in parallel

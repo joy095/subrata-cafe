@@ -2,9 +2,6 @@
 import { client } from '$lib/server/contentful';
 import type { PageServerLoad } from './$types';
 
-// Enable prerendering for static generation
-export const prerender = true;
-
 
 export const load: PageServerLoad = async () => {
     try {
