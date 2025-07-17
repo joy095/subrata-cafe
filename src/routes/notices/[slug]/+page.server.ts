@@ -1,16 +1,23 @@
 // src/routes/notices/[slug]/+page.server.ts
-import { client } from '$lib/contentful';
 import type { PageServerLoad } from './$types';
-
-export const prerender = true;
+import { error } from '@sveltejs/kit';
+import { getNoticeBySlug } from '$lib/api/contentful';
 
 export const load: PageServerLoad = async ({ params }) => {
-    const res = await client.getEntries({
-        content_type: 'notice',
-        'fields.slug': params.slug,
-    });
+    const { slug } = params;
+
+    if (!slug || typeof slug !== 'string') {
+        throw error(400, 'Invalid slug');
+    }
+
+    const notice = await getNoticeBySlug(slug);
+
+    if (!notice) {
+        console.error(`Notice notice not found for slug: ${slug}`);
+        throw error(404, 'Notice notice not found');
+    }
 
     return {
-        notice: res.items[0]?.fields
+        notice
     };
 };

@@ -17,8 +17,6 @@ export const load: PageServerLoad = async ({ params }) => {
         throw error(404, 'Blog post not found');
     }
 
-    console.log(post)
-
     return {
         post
     };

@@ -61,3 +61,22 @@ export async function getBlogPostBySlug(slug: string) {
             : undefined
     };
 }
+
+export async function getNoticeBySlug(slug: string) {
+    const entries = await client.getEntries({
+        content_type: 'notice',
+        'fields.slug': slug,
+        limit: 1
+    });
+
+    if (!entries.items.length) return null;
+
+    const entry = entries.items[0].fields;
+
+    return {
+        title: entry.headline ?? 'Untitled Notice',
+        slug: entry.slug ?? '',
+        date: entry.date ?? new Date().toISOString(),
+        body: entry.desc ?? 'No content available'
+    };
+}
