@@ -1,38 +1,173 @@
-<!-- Footer with Social Links -->
-<footer class="bg-gray-900 px-6 py-12 text-white">
-	<div class="mx-auto max-w-6xl text-center">
-		<h4 class="mb-4 text-2xl font-semibold">Stay Connected</h4>
-		<div class="mb-6 flex justify-center space-x-6">
-			<a
-				href="https://twitter.com"
-				class="text-gray-300 transition-colors hover:text-white"
-				aria-label="Follow us on Twitter"
-			>
-				<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-					<path
-						d="M22 4.01c-1 .49-2.07.83-3.2.98a5.57 5.57 0 002.45-3.06 11.15 11.15 0 01-3.53 1.35 5.56 5.56 0 00-9.47 5.07A15.76 15.76 0 011.67 2.87a5.56 5.56 0 001.72 7.42A5.53 5.53 0 01.9 9.3v.07a5.56 5.56 0 004.46 5.45 5.55 5.55 0 01-2.51.09 5.56 5.56 0 005.19 3.86A11.14 11.14 0 010 19.54a15.73 15.73 0 008.52 2.5c10.22 0 15.8-8.47 15.8-15.8 0-.24-.01-.48-.02-.72A11.29 11.29 0 0022 4.01z"
-					/>
-				</svg>
-			</a>
-			<a
-				href="https://facebook.com"
-				class="text-gray-300 transition-colors hover:text-white"
-				aria-label="Follow us on Facebook"
-			>
-				<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-					<path
-						d="M22 12a10 10 0 10-11.56 9.88v-6.99h-2.54v-2.89h2.54v-2.26c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.93h2.77l-.44 2.89h-2.33v6.99A10 10 0 0022 12z"
-					/>
-				</svg>
-			</a>
+<script>
+	import { fade } from 'svelte/transition';
+</script>
+
+<footer
+	class="rounded-t-2xl bg-gradient-to-b from-white to-gray-50 py-16 text-gray-700 shadow-xl"
+	in:fade={{ duration: 800 }}
+>
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-1 gap-12 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-4">
+			<!-- Column 1: Company Info -->
+			<div class="mb-8 sm:mb-0">
+				<h3
+					class="mb-6 inline-block border-b-2 border-gray-300 pb-3 text-2xl font-semibold text-gray-900 transition-all duration-300 hover:border-blue-500"
+				>
+					Company
+				</h3>
+				<ul class="space-y-4">
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>About Us</a
+						>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Blog</a
+						>
+					</li>
+				</ul>
+			</div>
+			<!-- Column 2: Support -->
+			<div class="mb-8 sm:mb-0">
+				<h3
+					class="mb-6 inline-block border-b-2 border-gray-300 pb-3 text-2xl font-semibold text-gray-900 transition-all duration-300 hover:border-blue-500"
+				>
+					Support
+				</h3>
+				<ul class="space-y-4">
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Help Center</a
+						>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Contact Us</a
+						>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>FAQ</a
+						>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Customer Service</a
+						>
+					</li>
+				</ul>
+			</div>
+			<!-- Column 3: Legal -->
+			<div class="mb-8 sm:mb-0">
+				<h3
+					class="mb-6 inline-block border-b-2 border-gray-300 pb-3 text-2xl font-semibold text-gray-900 transition-all duration-300 hover:border-blue-500"
+				>
+					Legal
+				</h3>
+				<ul class="space-y-4">
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Privacy Policy</a
+						>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Terms of Service</a
+						>
+					</li>
+				</ul>
+			</div>
+			<!-- Column 4: Connect & Newsletter -->
+			<div>
+				<h3
+					class="mb-6 inline-block border-b-2 border-gray-300 pb-3 text-2xl font-semibold text-gray-900 transition-all duration-300 hover:border-blue-500"
+				>
+					Connect
+				</h3>
+				<ul class="mb-8 space-y-4">
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Facebook</a
+						>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="text-lg font-medium text-gray-600 transition-all duration-300 hover:translate-x-1 hover:text-blue-600"
+							>Instagram</a
+						>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<p class="text-sm text-gray-400">
-			© {new Date().getFullYear()} CaféConnect. All rights reserved.
-		</p>
-		<div class="mt-4 flex justify-center space-x-6">
-			<a href="#" class="text-gray-400 transition-colors hover:text-white">Privacy Policy</a>
-			<a href="#" class="text-gray-400 transition-colors hover:text-white">Terms of Service</a>
-			<a href="/contact" class="text-gray-400 transition-colors hover:text-white">Contact Us</a>
+		<div class="mt-12 border-t border-gray-200 pt-8 text-center text-lg text-gray-500">
+			<p>© 2025 Your Company. All rights reserved.</p>
+			<p class="mt-3">
+				Designed and Developed by
+				<a
+					href="https://joykarmakar.vercel.app"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-blue-600 transition-all duration-300 hover:text-blue-700 hover:underline"
+					>Joy Karmakar</a
+				>
+			</p>
 		</div>
 	</div>
 </footer>
+
+<style>
+	:global(body) {
+		font-family:
+			'Inter',
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			sans-serif;
+		margin: 0;
+	}
+
+	footer a {
+		display: inline-block;
+	}
+
+	/* Smooth hover effects and subtle animations */
+	footer {
+		--tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		backdrop-filter: blur(10px);
+	}
+
+	/* Ensure inputs and buttons have a premium feel */
+	input,
+	button {
+		transition: all 0.3s ease;
+	}
+
+	input:focus {
+		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+	}
+
+	button:hover {
+		transform: translateY(-1px);
+	}
+</style>
