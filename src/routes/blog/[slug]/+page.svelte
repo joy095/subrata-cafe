@@ -82,7 +82,7 @@
 					src={data.post.thumbnail.url.toString()}
 					alt={data.post.thumbnail.alt.toString()}
 					loading="lazy"
-					class="h-auto w-full rounded-xl object-cover shadow-md transition-transform duration-500 group-hover:scale-[1.03] group-hover:shadow-lg"
+					class="max-h-[80vh] w-full rounded-xl object-cover shadow-md transition-transform duration-500 group-hover:scale-[1.03] group-hover:shadow-lg"
 				/>
 				<div
 					class="absolute inset-0 rounded-xl bg-gradient-to-t from-gray-900/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
