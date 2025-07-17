@@ -8,7 +8,7 @@ export const prerender = true;
 // Optional: Add caching headers for static assets
 export const config = {
     isr: {
-        expiration: 3600 // Cache for 1 hour
+        expiration: 60 // Cache for 10 minutes
     }
 };
 
