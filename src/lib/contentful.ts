@@ -1,6 +1,6 @@
 import { createClient } from 'contentful';
 
-if (!import.meta.env.CONTENTFUL_SPACE_ID || !import.meta.env.CONTENTFUL_ACCESS_TOKEN) {
+if (!import.meta.env.VITE_CONTENTFUL_SPACE_ID || !import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN) {
     throw new Error('Missing Contentful environment variables.');
 }
 
