@@ -3,6 +3,7 @@
 	import { fade, slide } from 'svelte/transition';
 	import { spring } from 'svelte/motion';
 	import formatDate from '$lib/dateFormat';
+	import Hero from '$lib/Hero.svelte';
 
 	export let data: {
 		latestNotices: {
@@ -32,37 +33,7 @@
 	let ctaScale = spring(1, { stiffness: 0.1, damping: 0.8 });
 </script>
 
-<section
-	class="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-blue-700 to-purple-800 px-6 py-28 text-center text-white"
->
-	<div
-		class="animate-subtle-parallax absolute inset-0 bg-[url('https://www.wearegecko.co.uk/media/50316/mountain-3.jpg')] bg-cover bg-center opacity-10"
-	></div>
-	<div class="relative mx-auto max-w-6xl">
-		<h2
-			class="mb-6 text-5xl font-extrabold tracking-tight md:text-6xl"
-			transition:fade={{ duration: 600 }}
-		>
-			Welcome to CaféConnect
-		</h2>
-		<p
-			class="mb-10 text-xl text-indigo-100 opacity-90 md:text-2xl"
-			transition:fade={{ delay: 200, duration: 600 }}
-		>
-			Your hub for the latest updates, insights, and community connections.
-		</p>
-		<a
-			href="#"
-			class="inline-block rounded-full bg-indigo-600 px-10 py-4 text-lg font-semibold text-white transition-transform hover:bg-indigo-700 hover:shadow-xl"
-			aria-label="Explore our services"
-			style="transform: scale({$ctaScale})"
-			on:mouseenter={() => ($ctaScale = 1.05)}
-			on:mouseleave={() => ($ctaScale = 1)}
-		>
-			Explore Now
-		</a>
-	</div>
-</section>
+<Hero />
 
 <section class="bg-white px-6 py-20">
 	<div class="mx-auto max-w-6xl items-center gap-12 md:flex">
