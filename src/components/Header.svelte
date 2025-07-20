@@ -47,13 +47,6 @@
 					>Blog</a
 				>
 			</li>
-			<li>
-				<a
-					href="/contact"
-					class="relative text-lg font-medium text-gray-700 transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-0 after:bg-indigo-600 after:transition-all after:duration-300 after:content-[''] hover:text-indigo-700 hover:after:w-full"
-					>Contact</a
-				>
-			</li>
 		</ul>
 
 		<!-- Mobile Menu Button -->
